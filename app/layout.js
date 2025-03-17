@@ -24,13 +24,13 @@ export const metadata = {
         rel: 'icon',
         type: 'image/png',
         sizes: '32x32',
-        url: '/favicon-32x32.png',
+        url: './profile.svg',
       },
       {
         rel: 'icon',
         type: 'image/png',
         sizes: '16x16',
-        url: '/favicon-16x16.png',
+        url: './profile.svg',
       },
     ],
   },
@@ -41,7 +41,7 @@ export const metadata = {
     siteName: 'Ram Krishna Portfolio',
     images: [
       {
-        url: '/og-image.png', // Create a social media preview image
+        url: './profile.svg', // Create a social media preview image
         width: 1200,
         height: 630,
         alt: 'Ram Krishna - Software Engineer',
