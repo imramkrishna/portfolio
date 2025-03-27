@@ -5,6 +5,7 @@ import { FaGithub, FaLinkedin, FaTwitter, FaBars, FaTimes } from 'react-icons/fa
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   // Handle scroll effect for navbar
   useEffect(() => {
@@ -14,6 +15,9 @@ const Navbar = () => {
       } else {
         setScrolled(false);
       }
+      
+      // Determine which section is in view
+      updateActiveSection();
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -22,13 +26,34 @@ const Navbar = () => {
     };
   }, []);
 
+  // Function to determine which section is currently in view
+  const updateActiveSection = () => {
+    const sections = ['home', 'about', 'services', 'portfolio', 'contact'];
+    const scrollPosition = window.scrollY + 150; // Adding offset for better detection
+
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = document.getElementById(sections[i]);
+      if (section) {
+        const offsetTop = section.offsetTop;
+        if (scrollPosition >= offsetTop) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
+    }
+  };
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   const handleClick = (e) => {
     e.preventDefault();
-    const target = document.querySelector(e.target.getAttribute('href'));
+    const href = e.target.getAttribute('href');
+    const sectionId = href.substring(1); // Remove the # from href
+    setActiveSection(sectionId);
+    
+    const target = document.querySelector(href);
     if (target) {
       const headerOffset = 80; // adjust based on your navbar height
       const elementPosition = target.offsetTop;
@@ -63,18 +88,28 @@ const Navbar = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-1">
             <ul className="flex space-x-2">
-              {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item, index) => (
-                <li key={index}>
-                  <a 
-                    href={`#${item.toLowerCase().replace(/\s+/g, '')}`} 
-                    onClick={handleClick}
-                    className="px-4 py-2 text-gray-300 hover:text-white rounded-md transition-all relative group"
-                  >
-                    {item}
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-400 group-hover:w-full transition-all duration-300"></span>
-                  </a>
-                </li>
-              ))}
+              {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item, index) => {
+                const sectionId = item.toLowerCase().replace(/\s+/g, '');
+                const isActive = activeSection === sectionId;
+                return (
+                  <li key={index}>
+                    <a 
+                      href={`#${sectionId}`} 
+                      onClick={handleClick}
+                      className={`px-4 py-2 rounded-md transition-all relative group
+                        ${isActive 
+                          ? 'text-white font-medium' 
+                          : 'text-gray-300 hover:text-white'}`}
+                    >
+                      {item}
+                      <span 
+                        className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-400 transition-all duration-300
+                          ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}>
+                      </span>
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
@@ -142,17 +177,24 @@ const Navbar = () => {
       >
         <div className="container mx-auto px-4">
           <ul className="space-y-4 mb-6">
-            {['Home', 'About Me', 'Services', 'Portfolio', 'Contact'].map((item, index) => (
-              <li key={index}>
-                <a 
-                  href={`#${item.toLowerCase().replace(/\s+/g, '')}`} 
-                  onClick={handleClick}
-                  className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md transition-colors"
-                >
-                  {item}
-                </a>
-              </li>
-            ))}
+            {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item, index) => {
+              const sectionId = item.toLowerCase().replace(/\s+/g, '');
+              const isActive = activeSection === sectionId;
+              return (
+                <li key={index}>
+                  <a 
+                    href={`#${sectionId}`} 
+                    onClick={handleClick}
+                    className={`block px-4 py-2 rounded-md transition-colors
+                      ${isActive 
+                        ? 'text-white bg-gray-800 border-l-2 border-blue-500' 
+                        : 'text-gray-300 hover:text-white hover:bg-gray-800'}`}
+                  >
+                    {item}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
           
           <div className="flex justify-center space-x-6 pt-4 border-t border-gray-800">
