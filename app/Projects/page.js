@@ -28,6 +28,16 @@ const Portfolio = () => {
         },
         {
             id: 3,
+            title: "ShopIt - Ecommerce Platform",
+            image: "./shopit.png",
+            description: "This is a comprehensive e-commerce platform with product catalog, shopping cart functionality, and secure payment processing using the MERN stack",
+            technologies: ["React Js", "Javascript", "TypeScript","Context Api","Express","Authentication"],
+            github: "https://github.com/imramkrishna/shopit.git",
+            live: "https://shopit-blond.vercel.app",
+            category: "Full Stack"
+        },
+        {
+            id: 4,
             title: "Games Hub",
             image: "./gameshub.png",
             description: "Flappy Bird, Snake, and Tetris — all integrated into a single, modern website! This project was built using Next.js and incorporates seamless gameplay directly in the browser.",
@@ -37,7 +47,7 @@ const Portfolio = () => {
             category: "Web App"
         },
         {
-            id: 4,
+            id: 5,
             title: "Banking System",
             image: "./bank.avif",
             description: "This Full Stack Banking Application allows users to manage accounts, make transactions, and check balances securely. Built with Node.js, Express, Mongoose, and a responsive frontend.",
