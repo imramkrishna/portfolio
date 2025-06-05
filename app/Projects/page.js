@@ -8,12 +8,12 @@ const Portfolio = () => {
     const projects = [
         {
             id: 1,
-            title: "Multi Vendor Admin Panel",
-            image: "./admin.png",
-            description: "A robust multi vendor admin panel for food, grocery and pharmacy delivery applications with admin panel",
-            technologies: ["NextJs", "Node.js", "MongoDB", "Express", "Redux", "Tailwind CSS", "JWT"],
-            github: "https://github.com/imramkrishna/multivendor",
-            live: "https://multivendorpanel.vercel.app/grocery/dashboard",
+            title: "XCodeGen - AI Assistant",
+            image: "./xcodegen.jpg",
+            description: "XCodeGen – an AI code generator built to break the limits of current tools like ChatGPT, v0.dev, and Claude.I built this not just to make something faster.I built it because I was frustrated — by slow response times, by lack of real file structure, by tools that don’t feel like they understand how devs actually build software.",
+            technologies: ["React", "Node.js", "MongoDB", "Express", "Redux", "Tailwind CSS", "JWT","TypeScript"],
+            github: "https://github.com/imramkrishna/XCodeGen",
+            live: "https://x-code-gen.vercel.app/",
             category: "Full Stack"
         },
         {
@@ -54,6 +54,16 @@ const Portfolio = () => {
             technologies: ["MERN Stack", "Redux", "AWS"],
             github: "https://github.com/imramkrishna/BankingWebApplication",
             live: "https://bankingwebapplication.onrender.com",
+            category: "Full Stack"
+        },
+        {
+            id: 6,
+            title: "Multi Vendor Admin Panel",
+            image: "./admin.png",
+            description: "A robust multi vendor admin panel for food, grocery and pharmacy delivery applications with admin panel",
+            technologies: ["NextJs", "Node.js", "MongoDB", "Express", "Redux", "Tailwind CSS", "JWT"],
+            github: "https://github.com/imramkrishna/multivendor",
+            live: "https://multivendorpanel.vercel.app/grocery/dashboard",
             category: "Full Stack"
         }
     ];
