@@ -47,8 +47,8 @@ const Hero = () => {
             
             {/* Description */}
             <p className="text-gray-400 text-lg md:text-xl mb-10 max-w-2xl leading-relaxed">
-              I am a full stack developer working at Blue Fox Pvt. Ltd specializing in 
-              MERN stack and Next.js, building modern web applications that deliver 
+              I am a full stack developer as  
+              MERN stack and Next.js developer, building modern web applications that deliver 
               exceptional user experiences.
             </p>
             
